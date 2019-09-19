@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>in-test-4.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000000;}
+.s1 { color: #808080; font-style: italic;}
+.s2 { color: #000080; font-weight: bold;}
+.s3 { color: #0000ff;}
+.s4 { color: #008080; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+in-test-4.py</font>
+</center></td></tr></table>
+<pre>
+<span class="s1"># неубывание 1+2+3 / 3+4+5</span>
+<span class="s2">def </span>calc1(check):
+    results = {}
+    <span class="s2">for </span>n <span class="s2">in </span>range(<span class="s3">10000</span>,<span class="s3">99999</span>):
+        s = str(n)
+        n1 = int(s[<span class="s3">0</span>]) + int(s[<span class="s3">1</span>]) + int(s[<span class="s3">2</span>])
+        n2 = int(s[<span class="s3">2</span>]) + int(s[<span class="s3">3</span>]) + int(s[<span class="s3">4</span>])
+        <span class="s2">if </span>(n1 &gt; n2):
+            res = str(n2) + str(n1)
+        <span class="s2">else</span>:
+            res = str(n1) + str(n2)
+        <span class="s2">if </span>res <span class="s2">in </span>check:
+            results[res] = res
+            print(s, res)
+    <span class="s2">return </span>results
+
+<span class="s1"># неубывание 1 + 3 + 5 // 2 + 4</span>
+<span class="s2">def </span>calc2(check):
+    results = {}
+    <span class="s2">for </span>n <span class="s2">in </span>range(<span class="s3">10000</span>,<span class="s3">99999</span>):
+        s = str(n)
+        n1 = int(s[<span class="s3">0</span>]) + int(s[<span class="s3">2</span>]) + int(s[<span class="s3">4</span>])
+        n2 = int(s[<span class="s3">1</span>]) + int(s[<span class="s3">3</span>])
+        <span class="s2">if </span>(n1 &gt; n2):
+            res = str(n2) + str(n1)
+        <span class="s2">else</span>:
+            res = str(n1) + str(n2)
+        <span class="s2">if </span>res <span class="s2">in </span>check:
+            results[res] = res
+            print(s, res)
+    <span class="s2">return </span>results
+
+<span class="s1"># невозрастание 1 + 3 + 5 // 2 + 4</span>
+<span class="s2">def </span>calc3(check):
+    results = {}
+    <span class="s2">for </span>n <span class="s2">in </span>range(<span class="s3">10000</span>,<span class="s3">99999</span>):
+        s = str(n)
+        n1 = int(s[<span class="s3">0</span>]) + int(s[<span class="s3">2</span>]) + int(s[<span class="s3">4</span>])
+        n2 = int(s[<span class="s3">1</span>]) + int(s[<span class="s3">3</span>])
+        <span class="s2">if </span>(n1 &lt; n2):
+            res = str(n2) + str(n1)
+        <span class="s2">else</span>:
+            res = str(n1) + str(n2)
+        <span class="s2">if </span>res <span class="s2">in </span>check:
+            results[res] = res
+            print(s, res)
+    <span class="s2">return </span>results
+
+check1 = [<span class="s4">'2525'</span>, <span class="s4">'256'</span>, <span class="s4">'2520'</span>, <span class="s4">'2528'</span>, <span class="s4">'2825'</span>, <span class="s4">'2025'</span>, <span class="s4">'625'</span>, <span class="s4">'106'</span>]
+check2 = [<span class="s4">'30'</span>, <span class="s4">'1528'</span>, <span class="s4">'116'</span>, <span class="s4">'1519'</span>, <span class="s4">'2019'</span>, <span class="s4">'1920'</span>, <span class="s4">'1915'</span>, <span class="s4">'316'</span>, <span class="s4">'2815'</span>]
+check3 = [<span class="s4">'10'</span>, <span class="s4">'1528'</span>, <span class="s4">'116'</span>, <span class="s4">'1519'</span>, <span class="s4">'2019'</span>, <span class="s4">'1920'</span>, <span class="s4">'1915'</span>, <span class="s4">'316'</span>, <span class="s4">'2815'</span>]
+check4 = [<span class="s4">'1220'</span>, <span class="s4">'120'</span>, <span class="s4">'210'</span>, <span class="s4">'2012'</span>, <span class="s4">'1920'</span>, <span class="s4">'2019'</span>, <span class="s4">'212'</span>, <span class="s4">'2919'</span>, <span class="s4">'1929'</span>]
+
+print(calc1(check1))
+print(calc2(check2))
+print(calc3(check3))
+print(calc3(check4))
+</pre>
+</body>
+</html>

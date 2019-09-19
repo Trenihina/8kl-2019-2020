@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>in-test-3.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008080; font-weight: bold;}
+.s4 { color: #808080; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+in-test-3.py</font>
+</center></td></tr></table>
+<pre><span class="s0">def </span>rule0(strForCheck:str):
+    ch1 = strForCheck[<span class="s2">2</span>] <span class="s0">in </span>[<span class="s3">'E'</span>, <span class="s3">'H'</span>, <span class="s3">'B'</span>]
+    ch2 = strForCheck[<span class="s2">0</span>] <span class="s0">in </span>[<span class="s3">'D'</span>, <span class="s3">'H'</span>, <span class="s3">'B'</span>, <span class="s3">'C'</span>] <span class="s0">and </span>strForCheck[<span class="s2">0</span>] != strForCheck[<span class="s2">2</span>]
+    ch3 = strForCheck[<span class="s2">1</span>] <span class="s0">in </span>[<span class="s3">'D'</span>, <span class="s3">'E'</span>,<span class="s3">'C'</span>] <span class="s0">and </span>strForCheck[<span class="s2">1</span>] != strForCheck[<span class="s2">0</span>]
+    <span class="s0">return </span>ch1 <span class="s0">and </span>ch2 <span class="s0">and </span>ch3
+
+<span class="s4"># Цепочка из четырёх бусин, помеченных латинскими буквами, формируется по следующему правилу:</span>
+# – на втором месте цепочки стоит одна из бусин A, B, C;
+# – в конце– одна из бусин B, D, C, которой нет на втором месте;
+# – в начале – одна из бусин A, D, E, которой нет на четвёртом есте;
+# – на третьем месте – одна из бусин C, D, E, не стоящая на первом месте.
+# Определите, какие из перечисленных цепочек созданы по этому правилу?
+# BADC  EACB  DBCE  AAEB  EAED  ECCD  EABC  ACDD  ABCB
+# В ответе перечислите все такие цепочки через запятую.
+<span class="s0">def </span>rule1(strForCheck:str):
+    ch1 = strForCheck[<span class="s2">1</span>] <span class="s0">in </span>[<span class="s3">'A'</span>, <span class="s3">'B'</span>, <span class="s3">'C'</span>]
+    ch2 = strForCheck[<span class="s2">3</span>] <span class="s0">in </span>[<span class="s3">'B'</span>, <span class="s3">'D'</span>,<span class="s3">'C'</span>] <span class="s0">and </span>strForCheck[<span class="s2">3</span>] != strForCheck[<span class="s2">1</span>]
+    ch3 = strForCheck[<span class="s2">0</span>] <span class="s0">in </span>[<span class="s3">'A'</span>, <span class="s3">'D'</span>,<span class="s3">'E'</span>] <span class="s0">and </span>strForCheck[<span class="s2">0</span>] != strForCheck[<span class="s2">3</span>]
+    ch4 = strForCheck[<span class="s2">2</span>] <span class="s0">in </span>[<span class="s3">'C'</span>, <span class="s3">'D'</span>,<span class="s3">'E'</span>] <span class="s0">and </span>strForCheck[<span class="s2">2</span>] != strForCheck[<span class="s2">0</span>]
+    <span class="s0">return </span>ch1 <span class="s0">and </span>ch2 <span class="s0">and </span>ch3 <span class="s0">and </span>ch4
+
+
+<span class="s3">'''3. Цепочка из трёх бусин, помеченных латинскими буквами, формируется по следующему правилу: 
+– в середине цепочки стоит одна из бусин A, D, F; 
+– на первом месте – одна из бусин C, B, A, которой нет на втором месте; 
+– в конце – одна из бусин C, B, D, F, не стоящая на первом месте. 
+Определите, какие из перечисленных цепочек созданы по этому правилу? 
+CAA  BDF  CFC  AAD  BFF  CDA  CDB  DAC  ACD 
+В ответе перечислите все такие цепочки через запятую. 
+'''</span>
+<span class="s0">def </span>rule2(strForCheck:str):
+    ch1 = strForCheck[<span class="s2">1</span>] <span class="s0">in </span>[<span class="s3">'A'</span>, <span class="s3">'D'</span>, <span class="s3">'F'</span>]
+    ch2 = strForCheck[<span class="s2">0</span>] <span class="s0">in </span>[<span class="s3">'C'</span>, <span class="s3">'B'</span>, <span class="s3">'A'</span>] <span class="s0">and </span>strForCheck[<span class="s2">0</span>] != strForCheck[<span class="s2">1</span>]
+    ch31 = strForCheck[<span class="s2">2</span>] <span class="s0">in </span>[<span class="s3">'C'</span>, <span class="s3">'B'</span>, <span class="s3">'D'</span>, <span class="s3">'F'</span>]
+    ch32 = strForCheck[<span class="s2">2</span>] != strForCheck[<span class="s2">0</span>]
+    ch3  = ch31 <span class="s0">and </span>ch32
+    <span class="s4"># ch3 = strForCheck[2] in ['C', 'B', 'D', 'F'] and strForCheck[2] != strForCheck[0]</span>
+    <span class="s0">return </span>ch1 <span class="s0">and </span>ch2 <span class="s0">and </span>ch3
+
+<span class="s3">''' 
+Цепочка из трёх бусин, помеченных латинскими буквами, формируется по следующему правилу: 
+– в начале цепочки стоит одна из бусин D, B, C; 
+– на третьем месте – одна из бусин A, C, D, E, которой нет на первом месте; 
+– в середине – одна из бусин А, B, C, E, не стоящая на третьем месте. 
+Определите, какие из перечисленных цепочек созданы по этому правилу? 
+BCE  DAB  CCE  DCD  CAA  BAC  ABC  DCB  DAE 
+В ответе перечислите все такие цепочки через запятую. 
+'''</span>
+
+<span class="s0">def </span>rule3(strForCheck:str):
+    ch1 = strForCheck[<span class="s2">0</span>] <span class="s0">in </span>[<span class="s3">'D'</span>, <span class="s3">'B'</span>, <span class="s3">'C'</span>]
+    ch2 = strForCheck[<span class="s2">2</span>] <span class="s0">in </span>[<span class="s3">'A'</span>, <span class="s3">'C'</span>, <span class="s3">'D'</span>,<span class="s3">'E'</span>] <span class="s0">and </span>strForCheck[<span class="s2">2</span>] != strForCheck[<span class="s2">0</span>]
+    ch3 = strForCheck[<span class="s2">1</span>] <span class="s0">in </span>[<span class="s3">'A'</span>, <span class="s3">'B'</span>, <span class="s3">'C'</span>, <span class="s3">'E'</span>] <span class="s0">and </span>strForCheck[<span class="s2">1</span>] != strForCheck[<span class="s2">2</span>]
+    <span class="s0">return </span>ch1 <span class="s0">and </span>ch2 <span class="s0">and </span>ch3
+
+<span class="s3">''' 
+Цепочка из трёх бусин, помеченных латинскими буквами, формируется по следующему правилу: 
+– в середине цепочки стоит одна из бусин C, D, H; 
+– на первом месте – одна из бусин A, B, C, которой нет на втором месте; 
+– в конце – одна из бусин А, B, D, H, не стоящая на первом месте. 
+Определите, какие из перечисленных цепочек созданы по этому правилу? 
+AHA  CCD  BHH  ADC  ADB  ACD  BDH  DCA  CAD 
+В ответе перечислите все такие цепочки через запятую. 
+'''</span>
+<span class="s0">def </span>rule4(strForCheck:str):
+    ch1 = strForCheck[<span class="s2">1</span>] <span class="s0">in </span>[<span class="s3">'C'</span>, <span class="s3">'D'</span>, <span class="s3">'H'</span>]
+    ch2 = strForCheck[<span class="s2">0</span>] <span class="s0">in </span>[<span class="s3">'A'</span>, <span class="s3">'B'</span>, <span class="s3">'C'</span>] <span class="s0">and </span>strForCheck[<span class="s2">0</span>] != strForCheck[<span class="s2">1</span>]
+    ch3 = strForCheck[<span class="s2">2</span>] <span class="s0">in </span>[<span class="s3">'A'</span>, <span class="s3">'B'</span>, <span class="s3">'D'</span>, <span class="s3">'H'</span>] <span class="s0">and </span>strForCheck[<span class="s2">2</span>] != strForCheck[<span class="s2">0</span>]
+    <span class="s0">return </span>ch1 <span class="s0">and </span>ch2 <span class="s0">and </span>ch3
+
+<span class="s4"># строки для проверки</span>
+inp1 = [<span class="s3">'BADC'</span>, <span class="s3">'EACB'</span>, <span class="s3">'DBCE'</span>, <span class="s3">'AAEB'</span>, <span class="s3">'EAED'</span>, <span class="s3">'ECCD'</span>, <span class="s3">'EABC'</span>, <span class="s3">'ACDD'</span>, <span class="s3">'ABCB'</span>]
+inp2 = [<span class="s3">'CAA'</span>, <span class="s3">'BDF'</span>, <span class="s3">'CFC'</span>, <span class="s3">'AAD'</span>, <span class="s3">'BFF'</span>, <span class="s3">'CDA'</span>, <span class="s3">'CDB'</span>, <span class="s3">'DAC'</span>, <span class="s3">'ACD'</span>]
+inp3 = [<span class="s3">'BCE'</span>, <span class="s3">'DAB'</span>, <span class="s3">'CCE'</span>, <span class="s3">'DCD'</span>, <span class="s3">'CAA'</span>, <span class="s3">'BAC'</span>, <span class="s3">'ABC'</span>, <span class="s3">'DCB'</span>, <span class="s3">'DAE'</span>]
+inp4 = [<span class="s3">'AHA'</span>, <span class="s3">'CCD'</span>, <span class="s3">'BHH'</span>, <span class="s3">'ADC'</span>, <span class="s3">'ADB'</span>, <span class="s3">'ACD'</span>, <span class="s3">'BDH'</span>, <span class="s3">'DCA'</span>, <span class="s3">'CAD'</span>]
+
+inp0 = [<span class="s3">'HDE'</span>, <span class="s3">'DDH'</span>, <span class="s3">'BHE'</span>, <span class="s3">'BEE'</span>, <span class="s3">'HDH'</span>, <span class="s3">'HBB'</span>, <span class="s3">'ECB'</span>, <span class="s3">'HED'</span>, <span class="s3">'CEB'</span>]
+
+print(<span class="s3">'Вариант 1'</span>)
+<span class="s0">for </span>chain <span class="s0">in </span>inp1:
+    print(chain+<span class="s3">':'</span>, rule1(chain))
+
+print(<span class="s3">'Вариант 2'</span>)
+<span class="s0">for </span>chain <span class="s0">in </span>inp2:
+    print(chain+<span class="s3">':'</span>, rule2(chain))
+
+print(<span class="s3">'Вариант 3'</span>)
+<span class="s0">for </span>chain <span class="s0">in </span>inp3:
+    print(chain+<span class="s3">':'</span>, rule3(chain))
+    
+print(<span class="s3">'Вариант 4'</span>)
+<span class="s0">for </span>chain <span class="s0">in </span>inp4:
+    print(chain+<span class="s3">':'</span>, rule4(chain))</pre>
+</body>
+</html>
